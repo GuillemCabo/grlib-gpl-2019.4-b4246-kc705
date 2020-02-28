@@ -120,16 +120,7 @@
 /*
  * Floating-point unit
  */
-#define CONFIG_FPU_ENABLE 1
-#define CONFIG_FPU_GRFPU 1
-#undef  CONFIG_FPU_GRFPULITE
-#define CONFIG_FPU_GRFPU_INFMUL 1
-#undef  CONFIG_FPU_GRFPU_DWMUL
-#undef  CONFIG_FPU_GRFPU_MODGEN
-#undef  CONFIG_FPU_GRFPU_TECHSPEC
-#undef  CONFIG_FPU_GRFPU_SH
-#undef  CONFIG_FPU_NETLIST
-#undef  CONFIG_FPU_RFINF
+#undef  CONFIG_FPU_ENABLE
 /*
  * Cache system
  */
@@ -234,10 +225,6 @@
 #undef  CONFIG_IUFT_BCHOTF
 #undef  CONFIG_IUFT_TECHSPEC
 #undef  CONFIG_IUFT_TMR
-#define CONFIG_FPUFT_NONE 1
-#undef  CONFIG_FPUFT_PAR
-#undef  CONFIG_FPUFT_DMR
-#undef  CONFIG_FPUFT_TMR
 #undef  CONFIG_RF_ERRINJ
 #define CONFIG_CACHE_FT_NONE 1
 #undef  CONFIG_CACHE_FT_EN
@@ -355,7 +342,12 @@
  * Ethernet             
  */
 #define CONFIG_GRETH_ENABLE 1
-#define CONFIG_GRETH_GIGA 1
+#undef  CONFIG_GRETH_GIGA
+#undef  CONFIG_GRETH_FIFO4
+#define CONFIG_GRETH_FIFO8 1
+#undef  CONFIG_GRETH_FIFO16
+#undef  CONFIG_GRETH_FIFO32
+#undef  CONFIG_GRETH_FIFO64
 #undef  CONFIG_GRETH_FMC_MODE
 /*
  * UARTs, timers and irq control         
