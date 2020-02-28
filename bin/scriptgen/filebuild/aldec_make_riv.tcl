@@ -85,7 +85,7 @@ proc append_special_aldec_make_riv {} {
     global GRLIB
     upvar make_riviera_contents mrc
     append mrc "\t@if test -r $GRLIB/lib/tech/secureip/ise/mcb_001.vp && test\
-        -r modelsim/secureip; then vlog -quiet "
+        -r modelsim/secureip; then vlog  "
     append mrc "-work secureip\
         $GRLIB/lib/tech/secureip/ise/mcb_*.vp; fi"
 }

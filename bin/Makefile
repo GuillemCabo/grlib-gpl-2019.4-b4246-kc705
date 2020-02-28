@@ -79,18 +79,18 @@ RMCOMLIBSX = $(RMCOMLIBS:%=lib/techmap/%) $(RMCOMLIBS:%=lib/tech/%)
 RMFPGALIBSX = $(ASICLIBS:%=lib/techmap/%) $(ASICLIBS:%=lib/tech/%)
 
 ALIB = alib
-ACOM = acom -quiet $(ACOMOPT)
-ALOG = alog -quiet $(ALOGOPT)
+ACOM = acom  $(ACOMOPT)
+ALOG = alog  $(ALOGOPT)
 AVHDL = avhdl
 
 VLIB = vlib
 ifeq ("$(GRLIB_SIMULATOR)", "ALDEC")
-VCOM = vcom -incr -nowarn ELAB1_0026 -nowarn COMP96_0259 -quiet $(VCOMOPT)
-VLOG = vlog -incr -v2k5 -quiet $(VLOGOPT)
-SVLOG = vlog -incr -quiet $(VLOGOPT)
+VCOM = vcom -incr -nowarn ELAB1_0026 -nowarn COMP96_0259  $(VCOMOPT)
+VLOG = vlog -incr -v2k5  $(VLOGOPT)
+SVLOG = vlog -incr  $(VLOGOPT)
 else
-VCOM = vcom -quiet $(VCOMOPT)
-VLOG = vlog -quiet $(VLOGOPT)
+VCOM = vcom  $(VCOMOPT)
+VLOG = vlog  $(VLOGOPT)
 SVLOG = $(VLOG)
 endif
 
@@ -286,7 +286,7 @@ avhdl-clean:
 
 ifeq ("$(GRLIB_SIMULATOR)", "ALDEC")
 riviera: make.riviera
-	@MTI_DEFAULT_LIB_TYPE=0 vsimsa -quiet -do "do libs.do; quit"
+	@MTI_DEFAULT_LIB_TYPE=0 vsimsa  -do "do libs.do; quit"
 	make -f make.riviera
 
 riviera-run:
@@ -307,10 +307,10 @@ else
 ### Riviera targets using WS
 
 riviera_ws: riviera_ws_create.do
-	vsimsa -quiet -do "do riviera_ws_create.do; quit"
+	vsimsa  -do "do riviera_ws_create.do; quit"
 
 riviera: riviera_ws
-	vsimsa -quiet -do "workspace.open riviera_ws/riviera_ws.rwsp; workspace.compile; quit"
+	vsimsa  -do "workspace.open riviera_ws/riviera_ws.rwsp; workspace.compile; quit"
 
 ifeq ("$(ASIMOPT)","")
 ASIMOPT = $(VSIMOPT)
@@ -404,7 +404,7 @@ vcs-clean:
 
 
 modelsim: compile.vsim
-	@MTI_DEFAULT_LIB_TYPE=0 vsim -c -quiet -do "do libs.do; quit"
+	@MTI_DEFAULT_LIB_TYPE=0 vsim -c  -do "do libs.do; quit"
 
 vsim-grlib: modelsim
 	make vsim
@@ -421,30 +421,30 @@ endif
 
 vsim-launch: scripts modelsim
 ifeq ("$(VSIMOPT)","")
-	@vsim -i -quiet -voptargs="+acc -nowarn 1" $(SIMTOP)
+	@vsim -i  -voptargs="+acc -nowarn 1" $(SIMTOP)
 else
-	vsim -i -quiet $(VSIMOPT)
+	vsim -i  $(VSIMOPT)
 endif
 
 vsim-mcb: scripts
 	-vlib modelsim
 	-vlib modelsim/unisim
-	vcom -quiet -explicit -work unisim $(XILINX)/vhdl/src/unisims/secureip/MCB.vhd
+	vcom  -explicit -work unisim $(XILINX)/vhdl/src/unisims/secureip/MCB.vhd
 
 vsim-unisim: modelsim
-	vcom -quiet -explicit -work unisim $(UNISIMSRC)
+	vcom  -explicit -work unisim $(UNISIMSRC)
 
 vsim-simprim: modelsim
-	vcom -quiet -explicit -work simprim -ignorevitalerrors $(SIMPRIMSRC)
+	vcom  -explicit -work simprim -ignorevitalerrors $(SIMPRIMSRC)
 
 # Ugly hardcode of testbench.vhd..
 vsim-netgen-syn:
-	vcom -quiet -explicit -work work netgen/translate/$(TOP)_translate.vhd
-	vcom -quiet -explicit -work work testbench.vhd
+	vcom  -explicit -work work netgen/translate/$(TOP)_translate.vhd
+	vcom  -explicit -work work testbench.vhd
 
 vsim-netgen-par:
-	vcom -quiet -explicit -work work netgen/par/$(TOP)_timesim.vhd
-	vcom -quiet -explicit -work work testbench.vhd
+	vcom  -explicit -work work netgen/par/$(TOP)_timesim.vhd
+	vcom  -explicit -work work testbench.vhd
 
 vsim-clean:
 	-rm -rf modelsim transcript *.mti stdout.log vsim.wlf vsim_stacktrace.vstf \
@@ -1062,7 +1062,7 @@ ifneq ("$(GRLIB_SIMULATOR)","Xilinx")
 	-@mkdir -p ./xilinx_lib
 	@if [ -d ./xilinx_lib/unisims_ver ]; then \
 	echo "Xilinx library already compiled"; else \
-	echo "compile_simlib -quiet -directory ./xilinx_lib/ -family all -language all -simulator $(GRLIB_XIL_simlib_Simulator) $(VIVADOCOMPILEIP) -library unisim -library simprim " > ./xilinx_lib/$(TOP)_simlib.tcl ; \
+	echo "compile_simlib  -directory ./xilinx_lib/ -family all -language all -simulator $(GRLIB_XIL_simlib_Simulator) $(VIVADOCOMPILEIP) -library unisim -library simprim " > ./xilinx_lib/$(TOP)_simlib.tcl ; \
 	vivado -mode batch -source ./xilinx_lib/$(TOP)_simlib.tcl ; \
 	fi;
 endif
@@ -1139,7 +1139,7 @@ else
 		echo "design.file.property " `basename $$f` "compilation/verilog/verilog-libraries \"secureip_ver;secureip;axi_bfm;unisims_ver;unisim;unimacro_ver;unimacro;simprim_ver;simprim;unifast_ver;unifast\"" >> riviera_ws_add_mig_7series.do; \
 	done;
 	@echo "workspace.design.setactive work; design.file.add $(XILINX_VIVADO)/data/verilog/src/glbl.v ; quit"  >> riviera_ws_add_mig_7series.do
-	@vsimsa -quiet -do riviera_ws_add_mig_7series.do
+	@vsimsa  -do riviera_ws_add_mig_7series.do
 endif
 endif
 endif
@@ -1179,7 +1179,7 @@ else
 		echo "design.file.property " `basename $$f` "compilation/verilog/verilog-libraries \"secureip_ver;secureip;axi_bfm;unisims_ver;unisim;unimacro_ver;unimacro;simprim_ver;simprim;unifast_ver;unifast\"" >> riviera_ws_add_mig_7series.do; \
 	done;
 	@echo "quit"  >> riviera_ws_add_sgmii_7series.do
-	@vsimsa -quiet -do riviera_ws_add_sgmii_7series.do
+	@vsimsa  -do riviera_ws_add_sgmii_7series.do
 endif
 endif
 endif

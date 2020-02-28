@@ -97,7 +97,7 @@ VHDLSYNFILES= config.vhd ahbrom.vhd leon3mp.vhd ddr_dummy.vhd
 VHDLSIMFILES=testbench.vhd
 
 TECHLIBS = unisim
-SKIP_SIM_TECHLIBS = 1
+##SKIP_SIM_TECHLIBS = 1
 
 LIBSKIP = pci pci/pcif core1553bbc core1553brm srio core1553brt idt gr1553 corePCIF \
 	tmtc openchip ihp spw gsi cypress hynix ftaddr \
