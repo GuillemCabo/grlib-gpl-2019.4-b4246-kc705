@@ -51,7 +51,8 @@ Design specifics
 * The application UART1 is connected to the USB/RS232 connector
 
 * The JTAG DSU interface is enabled and accesible via the JTAG port.
-  Start grmon with -xilusb to connect.
+  Start grmon with -digilent to connect. Remember to add the cable drivers to
+  $LD_LIBRARY_PATH
 
 Simulation and synthesis
 ------------------------
@@ -98,8 +99,7 @@ to program the FPGA.
 
 After successfully programmed the FPGA the user might have to press
 the 'EAST' button in order to successfully complete the calibration
-process in the MIG. Led 1 and led 2 should be constant green if the
-Calibration process has been successful.
+process in the MIG. 
 
 If user tries to connect to the board and the MIG has not been
 calibrated successfully 'grmon' will output: AMBA plug&play not found!
@@ -162,7 +162,7 @@ SW13 should be:
 Output from GRMON
 ------------------
 
- grmon -xilusb
+ grmon -digilent
   
   GRMON2 LEON debug monitor v2.0.30-149-ga91ee12 internal version
   
@@ -171,7 +171,7 @@ Output from GRMON
   Comments or bug-reports to support@gaisler.com
   
 
-Parsing -xilusb
+Parsing -digilent
 Xilusb: Cable type/rev : 0x3 
  JTAG chain (1): xc7k325t 
 
