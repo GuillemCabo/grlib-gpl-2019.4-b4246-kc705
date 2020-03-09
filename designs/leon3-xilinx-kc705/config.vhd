@@ -125,7 +125,7 @@ package config is
   constant CFG_MCTRL_SD64 : integer := 0;
   constant CFG_MCTRL_PAGE : integer := 0 + 0;
 -- Xilinx MIG 7-Series
-  constant CFG_MIG_7SERIES : integer := 1;
+  constant CFG_MIG_7SERIES : integer := 0;
   constant CFG_MIG_7SERIES_MODEL : integer := 0;
 -- AHB status register
   constant CFG_AHBSTAT : integer := 0;
