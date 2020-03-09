@@ -313,7 +313,7 @@
  * MIG 7-Series memory controller   
  */
 #define CONFIG_MIG_7SERIES 1
-#undef  CONFIG_MIG_7SERIES_MODEL
+#define CONFIG_MIG_7SERIES_MODEL 1
 #undef  CONFIG_AHBSTAT_ENABLE
 #define CONFIG_AHBSTAT_NFTSLV (1)
 /*
