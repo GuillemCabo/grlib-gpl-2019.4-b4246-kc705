@@ -52,7 +52,7 @@ Design specifics
 
 * The JTAG DSU interface is enabled and accesible via the JTAG port.
   Start grmon with -digilent to connect. Remember to add the cable drivers to
-  $LD_LIBRARY_PATH
+  $LD_LIBRARY_PATH and detach the device from Vivado before launching grmon
 
 Simulation and synthesis
 ------------------------
