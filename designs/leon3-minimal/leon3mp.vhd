@@ -37,6 +37,9 @@ use gaisler.leon3.all;
 use gaisler.uart.all;
 use gaisler.misc.all;
 use gaisler.jtag.all;
+--BSC libraries
+library bsc;
+use bsc.counter_comp.all;
 --pragma translate_off
 use gaisler.sim.all;
 --pragma translate_on
@@ -149,7 +152,12 @@ begin
   clkgen0 : clkgen
     generic map (fabtech, clock_mult, clock_div, 0, 0, 0, 0, 0, BOARD_FREQ, 0)
     port map (clk, gnd, clkm, open, open, open, open, cgi, cgo, open, open, open);
-  
+----------------------------------------------------------------------
+---  BSC Instances ---------------------------------------------------
+----------------------------------------------------------------------
+  counter0 : counter
+    generic map (8)
+    port map (clkm, rstn, open);
 ---------------------------------------------------------------------- 
 ---  AHB CONTROLLER --------------------------------------------------
 ----------------------------------------------------------------------

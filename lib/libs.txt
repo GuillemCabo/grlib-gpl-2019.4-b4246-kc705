@@ -17,6 +17,4 @@ esa
 fmf
 spansion
 gsi
-
-
-
+bsc
