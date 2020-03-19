@@ -1,5 +1,20 @@
 # grlib-gpl-2019.4-b4246-kc705
-My changes for GRLIB on KC705
+My changes for GRLIB on KC705.
+Tested with questa10.7 and vivado2017.3
+
+Remember to set environment variables
+
+```
+export XILINXD="your license server"
+export XILINX="your_path/bin/Vivado/2018.2/ids_lite/ISE"
+export XILINX_VIVADO="/your_path/bin/Vivado/2018.2"
+export PATH="/your_path/bin/Vivado/2018.2/bin:${PATH}"
+export PATH="/your_path/bin/Vivado/2018.2/ids_lite/ISE/bin/lin64:${PATH}"
+export LD_LIBRARY_PATH="/your_path/bin/Vivado/2018.2/ids_lite/ISE/bin/lin64/:${LD_LIBRARY_PATH}"
+export GRLIB_SIMULATOR="Questa"
+export GRLIB="/your_path/BSC/grlib-gpl-2019.4-b4246-kc705"
+export EXAMPLE="/your_path/BSC/grlib-gpl-2019.4-b4246-kc705/designs/leon3-xilinx-kc705"
+```
 
 [GRLIB IP Library](https://www.gaisler.com/index.php/products/ipcores/soclibrary)
 The GRLIB IP Library is an integrated set of reusable IP cores, designed for system-on-chip (SOC) development. The IP cores are centered around the common on-chip bus, and use a coherent method for simulation and synthesis. The library is vendor independent, with support for different CAD tools and target technologies. A unique plug&play method is used to configure and connect the IP cores without the need to modify any global resources.
