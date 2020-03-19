@@ -2,3 +2,6 @@
 *.log
 *.o
 lib/tech/
+scriptgenwork/
+software/leon3/lib3tests.a
+
